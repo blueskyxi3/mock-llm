@@ -1,0 +1,11 @@
+{
+  "model": "mock-chat-short",
+  "messages": [
+    {"role": "system", "content": "你是一个账务流程演示助手。"},
+    {"role": "user", "content": "What is a reservation?"},
+    {"role": "assistant", "content": "请求开始前暂时预扣额度，完成后按实际 usage 结算。"},
+    {"role": "user", "content": "如果客户端取消了请求，该怎样验证最终账务状态？"}
+  ],
+  "stream": true,
+  "stream_options": {"include_usage": true}
+}

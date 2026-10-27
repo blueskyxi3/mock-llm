@@ -1,0 +1,16 @@
+services:
+  mock-llm:
+    build: .
+    image: ai-hub/mock-llm:0.1.0
+    ports:
+      - "127.0.0.1:18080:8080"
+    environment:
+      MOCK_LLM_API_KEY: ${MOCK_LLM_API_KEY:-}
+    cpus: 1.0
+    mem_limit: 256m
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 35s
+    volumes:
+      - ./config/default.json:/etc/mock-llm/config.json:ro

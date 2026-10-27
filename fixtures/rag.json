@@ -1,0 +1,7 @@
+{
+  "model": "mock-rag",
+  "messages": [
+    {"role": "system", "content": "根据检索片段回答，并保留文档引用。"},
+    {"role": "user", "content": "检索片段：\n[doc-1] AI Hub 调用前预扣，请求完成后发送账务事件，由 Worker 结算。\n[doc-2] SQL 与 Redis 通过幂等差额和持久凭证补偿保持最终一致。\n问题：账务如何保持最终一致？"}
+  ]
+}

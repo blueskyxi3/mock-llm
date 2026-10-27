@@ -1,0 +1,21 @@
+# Both targets deliberately point to the local mock, even when target=gateway.
+targets:
+  gateway:
+    base_url: http://127.0.0.1:18080/v1
+    api_key_env: MOCK_API_KEY
+  volcengine:
+    base_url: http://127.0.0.1:18080/v1
+    api_key_env: MOCK_API_KEY
+models:
+  - name: mock-chat-short
+    gateway_model: mock-chat-short
+    volcengine_model: mock-chat-short
+request:
+  path: /chat/completions
+  max_tokens: 128
+  timeout: 2m
+prompts:
+  - name: short
+    content: 你好，请简要介绍 AI 网关。
+  - name: mixed
+    content: Please describe billing completion. 请解释预扣与结算。

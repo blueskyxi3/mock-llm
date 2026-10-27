@@ -1,0 +1,280 @@
+{
+  "listen": ":8080",
+  "max_body_bytes": 16777216,
+  "max_context_tokens": 131072,
+  "default_output_tokens": 256,
+  "max_output_tokens": 8192,
+  "max_active": 4096,
+  "max_batch": 128,
+  "request_timeout_seconds": 120,
+  "shutdown_seconds": 30,
+  "models": [
+    {
+      "name": "mock-chat-short",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-chat-long",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 10000,
+      "output_tokens": 2048,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-stream-10s",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 10000,
+      "output_tokens": 512,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-stream-30s",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 30000,
+      "output_tokens": 512,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-stream-60s",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 60000,
+      "output_tokens": 512,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-rag",
+      "kind": "chat",
+      "scenario": "rag",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "根据检索片段，AI Hub 在请求开始前预扣，完成后提交账务事件并结算。[doc-1] SQL 和 Redis 通过凭证补偿保持最终一致。[doc-2]\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-agent",
+      "kind": "chat",
+      "scenario": "agent",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "根据工具返回的结果，本轮任务已经完成。这是确定性夹具回答，不执行真实工具。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "tool_fixtures": {
+        "calculate": {
+          "expression": "2+3"
+        },
+        "search_docs": {
+          "query": "AI Hub billing"
+        }
+      },
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-embedding",
+      "kind": "embedding",
+      "scenario": "embedding",
+      "first_token_ms": 0,
+      "input_ms_per_token": 0,
+      "total_ms": 0,
+      "output_tokens": 0,
+      "chunk_tokens": 0,
+      "response": "",
+      "dimensions": 1536,
+      "seed": "mock-llm-v1",
+      "fault": {}
+    },
+    {
+      "name": "mock-fault-429",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "429",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    },
+    {
+      "name": "mock-fault-503",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "503",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    },
+    {
+      "name": "mock-fault-timeout",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "timeout",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    },
+    {
+      "name": "mock-fault-disconnect",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "disconnect",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    },
+    {
+      "name": "mock-fault-stream_error",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "stream_error",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    },
+    {
+      "name": "mock-fault-invalid_usage",
+      "kind": "chat",
+      "scenario": "chat",
+      "first_token_ms": 200,
+      "input_ms_per_token": 0,
+      "total_ms": 1000,
+      "output_tokens": 128,
+      "chunk_tokens": 8,
+      "response": "这是一段可复现的模拟回答，用于测试模型代理、流式输出和账务链路。\n",
+      "json_response": {
+        "answer": "可复现的模拟回答",
+        "mock": true
+      },
+      "seed": "mock-llm-v1",
+      "fault": {
+        "kind": "invalid_usage",
+        "percent": 100,
+        "after_chunks": 2
+      }
+    }
+  ]
+}

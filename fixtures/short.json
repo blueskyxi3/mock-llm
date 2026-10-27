@@ -1,0 +1,7 @@
+{
+  "model": "mock-chat-short",
+  "messages": [
+    {"role": "system", "content": "请简洁回答。Please keep the answer brief."},
+    {"role": "user", "content": "你好，请介绍 AI 网关。What happens after a request completes?"}
+  ]
+}
